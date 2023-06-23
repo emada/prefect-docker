@@ -153,9 +153,7 @@ def build_docker_image(
         dir_name = os.path.basename(os.getcwd())
 
         if Path("requirements.txt").exists():
-            lines.append(
-                f"COPY requirements.txt /opt/prefect/{dir_name}/requirements.txt"
-            )
+            lines.append("COPY requirements.txt /opt/prefect/requirements.txt")
             lines.append("RUN python -m pip install -r requirements.txt")
 
         lines.append(f"COPY . /opt/prefect/{dir_name}/")
